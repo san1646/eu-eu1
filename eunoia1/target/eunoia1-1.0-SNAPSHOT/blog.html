@@ -1,3 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Properties" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -7,15 +13,20 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
+	<%  
+			  Properties propTitles = new Properties();		     
+			propTitles.load(getServletContext().getResourceAsStream("/WEB-INF/eu1-titles.properties"));			  ///WEB-INF/
+			  Properties propLinks = new Properties();		     
+			  propLinks.load(getServletContext().getResourceAsStream("/WEB-INF/eu1-links.properties"));			  ///WEB-INF/
+			%>
 	
-	
-	<title>Sanket Bharaswadkar</title>
+		<title><%= propTitles.getProperty("titleName") %> |  <%= propTitles.getProperty("personalQuote") %></title>
 	<meta name="description" content="">
 	
 	<!-- Mobile viewport optimized: h5bp.com/viewport -->
 	<meta name="viewport" content="width=device-width">
 	
-	
+	<link rel="icon" type="image/png"  href="/img/favicon.ico">
 	<link rel="stylesheet" media="screen" href="css/superfish.css" /> 
 	<link rel="stylesheet" href="css/nivo-slider.css" media="all"  /> 
 	<link rel="stylesheet" href="css/tweet.css" media="all"  />
@@ -39,10 +50,10 @@
 				<ul id="social-bar" class="cf">
 					
 					
-					<li class="facebook"><a href="http://facebook.com/san1646/"  title="Facebook" ></a></li>
-					<li class="linkedin"><a href="http://linkedin.com/pub/sanket-bharaswadkar/29/94/b0/"  title="forrst" ></a></li>
-					<li class="googleplus"><a href="https://plus.google.com/114953029374576399895/posts/"  title="googleplus" ></a></li>
-					<li class="twitter"><a href="https://twitter.com/p0nder0usPanda/"  title="twitter" ></a></li>
+					<li class="facebook"><a href="<%= propLinks.getProperty("facebook") %>"  title="Facebook" ></a></li>
+					<li class="linkedin"><a href="<%= propLinks.getProperty("linkedin") %>"  title="forrst" ></a></li>
+					<li class="googleplus"><a href="<%= propLinks.getProperty("googleplus") %>"  title="googleplus" ></a></li>
+					<li class="twitter"><a href="<%= propLinks.getProperty("twitter") %>"  title="twitter" ></a></li>
 				</ul>
 			</div>
 			<div class="cf"></div>
@@ -92,13 +103,13 @@
 					</div>
 					
 					<div class="entry-right-data">
-						<a href="single.html" class="post-heading" >LOREM IPSUM DOLOR</a>
+						<a href="single.html" class="post-heading" >Raison d'être</a>
 						<div class="meta">
-							<span class="user"><a href="#">By LuisZuno, </a></span>
+							<span class="user"><a href="#">By Sanket, </a></span>
 							<span class="tags"><a href="#">red</a>, <a href="#">cyan</a>, <a href="#">white</a>, <a href="#">blue</a></span>
 							</div>
 						<div class="excerpt">
-							Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. 
+							  <%= propTitles.getProperty("blogBlockQuote") %>
 						</div>	
 						<a href="single.html" class="link-button">Read More</a>	
 					</div>
@@ -116,7 +127,7 @@
 					<div class="entry-right-data">
 						<a href="single.html" class="post-heading" >LOREM IPSUM DOLOR</a>
 						<div class="meta">
-							<span class="user"><a href="#">By LuisZuno, </a></span>
+							<span class="user"><a href="#">By Sanket, </a></span>
 							<span class="tags"><a href="#">red</a>, <a href="#">cyan</a>, <a href="#">white</a>, <a href="#">blue</a></span>
 							</div>
 						<div class="excerpt">
@@ -138,7 +149,7 @@
 					<div class="entry-right-data">
 						<a href="single.html" class="post-heading" >LOREM IPSUM DOLOR</a>
 						<div class="meta">
-							<span class="user"><a href="#">By LuisZuno, </a></span>
+							<span class="user"><a href="#">By Sanket, </a></span>
 							<span class="tags"><a href="#">red</a>, <a href="#">cyan</a>, <a href="#">white</a>, <a href="#">blue</a></span>
 							</div>
 						<div class="excerpt">
@@ -170,12 +181,13 @@
 		        		<div class="sidebar-content">
 			        		<h4 class="heading">Sponsors</h4>
 			        		
-							<div class="ads cf">
+						<!-- 	<div class="ads cf">
 								<a href="http://themeforest.net/user/Ansimuz/portfolio?ref=ansimuz"><img src="img/dummies/banner-tf.gif" alt="Thumbnail"></a>
 								<a href="http://www.mojo-themes.com/?r=ansimuz" class="last" ><img src="img/dummies/banner-mt.jpeg" alt="Thumbnail"></a>
 								<a href="http://templatecreme.com/list/"><img src="img/dummies/banner-tp.jpeg" alt="Thumbnail"></a>
 								<a href="http://themeforest.net/user/Ansimuz/portfolio?ref=ansimuz" class="last"><img src="img/dummies/banner-tf.gif" alt="Thumbnail"></a>
 							</div>
+							 -->
 						</div>
 						<div class="sidebar-bottom"></div>
 	        		</li>
@@ -183,8 +195,10 @@
 	        		<li class="block">
 			        	<div class="sidebar-top"></div>
 		        		<div class="sidebar-content">
-		        			<h4 class="heading">Text Widget</h4>
-							Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. 
+		        			<h4 class="heading">Things I ponder</h4>
+							Although, I do not have a say in the US elections, but I am keenly following them. It would be interesting to see how the Democrats respond to 
+							the rising international challenges of ISIS, Ebola and domestic problems such as healthcare and economy. Also, who the Republicans will project 
+							a strong unifying personality for the 2016 Presidential elections?
 						</div>
 						<div class="sidebar-bottom"></div>
 	        		</li>
@@ -225,7 +239,7 @@
 					<ul class="tweet_list">
 						<li>
 						<div class="tweet_time">Today</div>
-						Sanket B.  <a href="http://twitter.com/p0nder0usPanda" >@p0nder0usPanda</a> </li>
+						Sanket B.  <a href="<%= propLinks.getProperty("twitter") %>" >@p0nder0usPanda</a> </li>
 					</ul>
 					
 					</div>

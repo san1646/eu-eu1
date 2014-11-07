@@ -1,3 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Properties" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -7,15 +13,20 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
+	<%  
+			  Properties propTitles = new Properties();		     
+			propTitles.load(getServletContext().getResourceAsStream("/WEB-INF/eu1-titles.properties"));			  ///WEB-INF/
+			  Properties propLinks = new Properties();		     
+			  propLinks.load(getServletContext().getResourceAsStream("/WEB-INF/eu1-links.properties"));			  ///WEB-INF/
+			%>
 	
-	
-	<title>Sanket Bharaswadkar</title>
+		<title><%= propTitles.getProperty("titleName") %> |  <%= propTitles.getProperty("personalQuote") %></title>
 	<meta name="description" content="">
 	
 	<!-- Mobile viewport optimized: h5bp.com/viewport -->
 	<meta name="viewport" content="width=device-width">
 	
-	
+	<link rel="icon" type="image/png"  href="/img/favicon.ico">
 	<link rel="stylesheet" media="screen" href="css/superfish.css" /> 
 	<link rel="stylesheet" href="css/nivo-slider.css" media="all"  /> 
 	<link rel="stylesheet" href="css/tweet.css" media="all"  />
@@ -39,10 +50,10 @@
 				<ul id="social-bar" class="cf">
 					
 					
-					<li class="facebook"><a href="http://facebook.com/san1646/"  title="Facebook" ></a></li>
-					<li class="linkedin"><a href="http://linkedin.com/pub/sanket-bharaswadkar/29/94/b0/"  title="forrst" ></a></li>
-					<li class="googleplus"><a href="https://plus.google.com/114953029374576399895/posts/"  title="googleplus" ></a></li>
-					<li class="twitter"><a href="https://twitter.com/p0nder0usPanda/"  title="twitter" ></a></li>
+					<li class="facebook"><a href="<%= propLinks.getProperty("facebook") %>"  title="Facebook" ></a></li>
+					<li class="linkedin"><a href="<%= propLinks.getProperty("linkedin") %>"  title="forrst" ></a></li>
+					<li class="googleplus"><a href="<%= propLinks.getProperty("googleplus") %>"  title="googleplus" ></a></li>
+					<li class="twitter"><a href="<%= propLinks.getProperty("twitter") %>"  title="twitter" ></a></li>
 				</ul>
 			</div>
 			<div class="cf"></div>
@@ -98,10 +109,7 @@
 							<span class="tags"><a href="#">red</a>, <a href="#">cyan</a>, <a href="#">white</a>, <a href="#">blue</a></span>
 							</div>
 						<div class="excerpt">
-							 I am the computer guy with varying fields of interests. From the technical perspective, I work on Java, databases, HTML, CSS, JavaScripts.
-							 From the non-technical perspective, I am interested in scientific developments, history, geography, maps, politics, international affairs, and many more.
-							 This is an attempt to showcase my understanding, point of view and learn things which I do not know. 
-							 The reason behind this effort is to just claim a tiny place in this vast universe of information.  
+							  <%= propTitles.getProperty("blogBlockQuote") %>
 						</div>	
 						<a href="single.html" class="link-button">Read More</a>	
 					</div>
@@ -231,7 +239,7 @@
 					<ul class="tweet_list">
 						<li>
 						<div class="tweet_time">Today</div>
-						Sanket B.  <a href="http://twitter.com/p0nder0usPanda" >@p0nder0usPanda</a> </li>
+						Sanket B.  <a href="<%= propLinks.getProperty("twitter") %>" >@p0nder0usPanda</a> </li>
 					</ul>
 					
 					</div>

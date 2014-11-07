@@ -49,6 +49,12 @@
             <version>1.9.14</version>
             <scope>test</scope>
         </dependency>
+		<dependency>
+			<groupId>com.thetransactioncompany</groupId>
+			<artifactId>java-property-utils</artifactId>
+			<version>1.6</version>
+		</dependency>
+
     </dependencies>
 
     <build>
